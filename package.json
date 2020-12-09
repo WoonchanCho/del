@@ -1,0 +1,42 @@
+{
+  "name": "jsxnat",
+  "version": "0.0.1",
+  "license": "MIT",
+  "source": "src/index.js",
+  "main": "dist/jsxnat.js",
+  "module": "dist/jsxnat.module.js",
+  "unpkg": "dist/jsxnat.umd.js",
+  "scripts": {
+    "dev": "DEBUG=jsxnat:* nodemon -r esm src/test.js",
+    "build:docs": "npx jsdoc -c jsdoc.conf.js -r README.md",
+    "watch:doc-src": "npx nodemon --exec 'yarn build:docs' --watch src",
+    "watch:doc-output": "npx livereload out",
+    "watch:docs": "yarn watch:doc-output & yarn watch:doc-src",
+    "build": "yarn build:web && yarn build:node",
+    "build:web": "microbundle --external none --target web --output dist/web --name JsXnat",
+    "build:node": "microbundle --external none --target node  --output dist/node"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "babel-loader": "^8.2.2",
+    "livereload": "^0.9.1",
+    "microbundle": "^0.12.4",
+    "nodemon": "^2.0.6",
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "debug": "^4.3.1",
+    "esm": "^3.2.25",
+    "isomorphic-fetch": "^3.0.0",
+    "isomorphic-form-data": "^2.0.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "js-base64": "^3.6.0",
+    "jsdoc": "~3.6.6",
+    "query-string": "^6.13.7",
+    "xmldom": "^0.4.0"
+  }
+}
